@@ -1,0 +1,2 @@
+<%@page pageEncoding="UTF-8"%>  
+你好，我是文本文件

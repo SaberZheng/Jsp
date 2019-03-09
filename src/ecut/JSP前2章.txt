@@ -1,0 +1,109 @@
+
+Introduction to JSP
+
+     Why use JSPs ?
+
+         1、Servlet 缺点
+
+	 2、html + Java (Servlet)
+
+	 3、Java Server Page : JSP ，是一种 Java服务器 脚本语言
+
+	       类似的还有:  PHP 、ASP 
+
+	       源头都是: CGI ( Common Gateway Interface )
+		    是HTTP服务器与你的或其它机器上的程序进行“交谈”的一种工具，
+		    其程序须运行在网络服务器上
+
+     The First JSP example
+
+     JSP life cycle *****
+
+              1、JSP (second.jsp) ----"翻译"-----> Servlet (second_jsp.java)
+
+              2、Servlet (.java) ------编译------> 字节码 (.class) 
+	      
+	      3、被 Servlet 容器加载( 加载 类 ) ---> 实例化 ---> 初始化( _jspInit )
+
+              4、提供服务: _jspService (反复被调用)
+
+	      5、结束生命周期: _jspDestory()
+
+	      Servlet Lifecycle
+			1、创建实例 
+			2、初始化(init) 
+			3、反复调用 service( req , resp )    
+			end: destory()
+
+		JSP Lifecycle
+			1、"翻译" jsp --> servlet
+			2、编译 java --> class 
+			3、加载到容器
+			4、创建实例 
+			5、初始化 (_jspInit )
+			6、提供服务 ( _jspService )
+
+			end: _jspDestory()
+
+     Directives 指令  (  page 、include 、taglib )
+
+	 JSP 开发者 在 JSP 页面上使用 指令 就是向 JSP 容器 下达命令
+
+	 命令 JSP 容器 做相应的事情
+
+	  如果用到某个包，导入时，只需要"告诉"容器导入即可：
+	  <%@  page import="java.util.*" %>
+
+	  意思是 命令 容器 把 java.util.* 导入
+
+     Scope:
+
+	页面 page 、
+
+	请求 request ( javax.servlet.ServletRequest 类型 )
+
+	会话 session ( javax.servlet.http.HttpSession 类型)
+
+	应用程序 application ( javax.servlet.ServletContext 类型) 
+
+	范围从小到大：p --> r --> s --> a
+
+
+Scripting Elements
+
+     comments  ( HTML 、JavaScript 、CSS 、Java 、*JSP* )
+
+         HTML 注释:  <!-- 注释内容 --> ，会在页面源代码中显示
+
+	 CSS 注释: 一定要在 <style > 和 </style> 之间
+                          /* 注释内容 */
+
+	 JavaScript 注释: (跟 Java 注释一样 )
+
+         Java 注释:  单行 //
+	                   多行 /*     */
+			   JavaDoc /**       */
+
+			   因为 JSP 中可以嵌入 Java 代码，所以，在嵌入代码的区域，可以使用 Java 注释
+
+	 JSP 注释:   格式: <%-- 注释内容 --%>
+	                    特点: 只存在于 JSP 页面上，对应的 .java 文件中没有
+
+
+     declarations  声明 :
+     
+		<%! public String name = "亚库普" ; %>    ------> 对应生成的 Servlet 类的属性
+
+     expressions 表达式 : 
+     
+		<%= "你好" %> ) --> _jspService 中 out.print( "你好" );
+
+                                        --> 或者 为 标签的属性赋值 <c:forEach var="v" items="<%= students %>" > ......
+
+     scriptlets ( 脚本程序 <% %> ) --> _jspService 方法中
+
+
+
+
+
+

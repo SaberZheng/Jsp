@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.malajava.util.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<!-- 通过初始化参数值 来确定编码名称，如果没有指定，则默认为UTF-8 -->
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- builtin -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/builtin/404.jsp</location>
+	</error-page>
+
+	<servlet>
+		<servlet-name>config.do</servlet-name>
+		<jsp-file>/builtin/config.jsp</jsp-file>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>罗玉凤</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>config.do</servlet-name>
+		<url-pattern>/config.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>
