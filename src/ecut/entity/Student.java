@@ -9,7 +9,7 @@ public class Student implements Serializable {
 
 	private Integer id;
 	private String studentName;
-	private char gender;
+	private char  gender;
 	private Date birthdate;
 
 	public Integer getId() {
